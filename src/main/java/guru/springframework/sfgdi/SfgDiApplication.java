@@ -14,9 +14,9 @@ public class SfgDiApplication {
     public static void main(String[] args) {
         ApplicationContext con = SpringApplication.run(SfgDiApplication.class, args); // spring creates context, basing on objects annotations, conf. files etc.
 
+        System.out.println("\n--------------Primary");
         MyController myController = (MyController) con.getBean("myController"); // hey, spring, give me a controller bean from your context
-        String methodResult = myController.sayHello();
-        System.out.println(methodResult);
+        System.out.println(myController.sayHello());
 
         System.out.println("\n--------------Property");
         PropertyInjectedController propertyInjectedController = (PropertyInjectedController) con.getBean("propertyInjectedController");

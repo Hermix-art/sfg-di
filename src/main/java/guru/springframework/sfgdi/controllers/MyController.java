@@ -1,5 +1,6 @@
 package guru.springframework.sfgdi.controllers;
 
+import guru.springframework.sfgdi.services.GreetingService;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -7,8 +8,14 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class MyController {
-    public String sayHello(){
-        System.out.println("Helloooo!");
-        return "Hi folks";
+    private final GreetingService greetingService;
+
+    //here we don't specify which Service bean should be used, so it will use the one, with @Primary annotation
+    public MyController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+    public String sayHello() {
+        return greetingService.sayHello();
     }
 }
